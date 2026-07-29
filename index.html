@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossiê — Antecipação de Recebíveis | Ceará SC / LFU</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B0B;--gold:#FFB400;--white:#fff;--light:#F8F8F6;--gray:#999;--gray-dk:#555;--gray-lt:#ccc;--green:#10B981;--red:#EF4444;--dark2:#1D1F13;--border:#333}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);-webkit-font-smoothing:antialiased;padding:30px 0}
+.slide{width:1280px;min-height:720px;margin:30px auto;position:relative;border-radius:10px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.5)}
+.slide-dark{background:var(--bg);color:var(--white)}
+.slide-light{background:var(--white);color:#222}
+.gold-bar{height:4px;background:var(--gold)}
+.gold-bar-bottom{position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--gold)}
+.inner{padding:44px 64px 60px}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;padding-bottom:12px;border-bottom:2px solid #e0e0e0}
+.header h3{font-size:22px;font-weight:700;color:#111}
+.header .tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+.logo{font-size:26px;font-weight:900;color:var(--gold);letter-spacing:-1px}
+.footer{position:absolute;bottom:14px;left:64px;right:64px;display:flex;justify-content:space-between;font-size:9px;color:#aaa;border-top:1px solid #e0e0e0;padding-top:6px}
+.footer-dark{color:#555;border-color:#333}
+.footer .f-logo{font-weight:900;color:var(--gold);letter-spacing:-0.5px}
+/* Cover */
+.cover{display:flex;flex-direction:column;justify-content:center;padding:80px 100px;min-height:720px}
+.cover .tag{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+.cover h1{font-size:42px;font-weight:800;line-height:1.15;margin-bottom:14px}
+.cover .sub{font-size:19px;color:var(--gray);font-weight:300;margin-bottom:48px}
+.cover .meta{font-size:13px;color:#666}
+/* Divider */
+.divider{display:flex;flex-direction:column;justify-content:center;padding:80px 100px;min-height:720px}
+.divider .num{font-size:72px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:12px}
+.divider h2{font-size:34px;font-weight:700;margin-bottom:10px}
+.divider .desc{font-size:17px;color:var(--gray);font-weight:300;max-width:650px}
+/* Tables */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--bg);color:var(--white);padding:9px 14px;text-align:left;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.5px}
+th:first-child{border-radius:6px 0 0 0}th:last-child{border-radius:0 6px 0 0}
+td{padding:8px 14px;border-bottom:1px solid #eee}
+tr:nth-child(even){background:var(--light)}
+.total-row{background:var(--bg)!important;color:var(--gold);font-weight:700}
+.total-row td{border:none}
+.val{text-align:right;font-variant-numeric:tabular-nums}
+/* Cards */
+.cards{display:grid;gap:16px}.c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:1fr 1fr 1fr}.c4{grid-template-columns:1fr 1fr 1fr 1fr}
+.card{background:var(--light);border-radius:8px;padding:20px;border-left:4px solid #ddd}
+.card.gld{border-color:var(--gold)}.card.grn{border-color:var(--green)}.card.dk{border-color:var(--bg)}.card.rd{border-color:var(--red)}
+.card .cl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#888;margin-bottom:5px}
+.card .cv{font-size:24px;font-weight:800;color:#111;margin-bottom:3px;letter-spacing:-.5px}
+.card .cd{font-size:11px;color:#666;line-height:1.5}
+/* Flow */
+.flow{display:flex;align-items:center;justify-content:center;gap:6px;margin:10px 0;flex-wrap:wrap}
+.fb{padding:12px 16px;border-radius:8px;font-size:11px;font-weight:600;text-align:center;min-width:120px}
+.fb-dk{background:var(--bg);color:var(--white)}.fb-gld{background:var(--gold);color:#111}.fb-grn{background:var(--green);color:var(--white)}.fb-lt{background:var(--white);color:#222;border:2px solid #ddd}
+.fa{font-size:16px;color:#aaa}
+/* Steps */
+.step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start}
+.sn{width:30px;height:30px;min-width:30px;background:var(--gold);color:#111;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
+.st{font-size:14px;font-weight:700;color:#111;margin-bottom:2px}
+.sd{font-size:12px;color:#666;line-height:1.5}
+/* Cols */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.col-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:10px}
+/* Bullets */
+.bl{list-style:none;padding:0}
+.bl li{font-size:12px;line-height:1.6;padding:3px 0 3px 18px;position:relative;color:#555}
+.bl li::before{content:'';position:absolute;left:0;top:10px;width:7px;height:7px;background:var(--gold);border-radius:2px}
+/* Badge */
+.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:10px;font-weight:600}
+.bg{background:#D1FAE5;color:#065F46}.by{background:#FEF3C7;color:#92400E}
+/* Utils */
+.sm{font-size:13px;line-height:1.7;color:#555}.xs{font-size:10px;color:#999}
+.mb12{margin-bottom:12px}.mb16{margin-bottom:16px}.mb20{margin-bottom:20px}.mb24{margin-bottom:24px}
+.mt12{margin-top:12px}.mt16{margin-top:16px}.mt20{margin-top:20px}
+.center{text-align:center}
+/* Toolbar */
+.toolbar{position:fixed;top:0;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--gold);padding:8px 20px;z-index:999;display:flex;align-items:center;gap:16px}
+.toolbar .t-logo{font-size:18px;font-weight:900;color:var(--gold)}
+.toolbar span{font-size:12px;color:var(--gray)}
+.toolbar button{background:var(--gold);color:#111;border:none;padding:6px 16px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
+.toolbar button:hover{opacity:.8}
+.toolbar button.sec{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+@media print{.toolbar{display:none}body{padding:0;background:#fff}.slide{margin:0;box-shadow:none;border-radius:0;page-break-after:always}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="t-logo">DUX</span>
+  <span>Dossiê Ceará / LFU — Editável</span>
+  <button onclick="window.print()">Exportar PDF</button>
+  <button class="sec" onclick="document.querySelectorAll('[contenteditable]').forEach(e=>e.contentEditable=e.contentEditable==='true'?'false':'true')">Alternar Edição</button>
+  <span style="margin-left:auto;font-size:10px;color:#555">Clique em qualquer texto para editar</span>
+</div>
+
+<!-- ===== SLIDE 1: CAPA ===== -->
+<div class="slide slide-dark" style="margin-top:60px">
+  <div class="cover">
+    <div class="logo" contenteditable="true">DUX</div>
+    <div class="tag" contenteditable="true" style="margin-top:40px">DOSSIÊ DE OPERAÇÃO — CONFIDENCIAL</div>
+    <h1 contenteditable="true">Antecipação de Recebíveis<br>de Direitos de Transmissão</h1>
+    <div class="sub" contenteditable="true">Ceará Sporting Club — Condomínio Forte União (LFU)</div>
+    <div class="meta" contenteditable="true">Julho 2026</div>
+  </div>
+  <div class="gold-bar-bottom"></div>
+</div>
+
+<!-- ===== SLIDE 2: AGENDA ===== -->
+<div class="slide slide-light">
+  <div class="gold-bar"></div>
+  <div class="inner">
+    <div class="header"><h3 contenteditable="true">Agenda</h3><span class="tag">ÍNDICE</span></div>
+    <table>
+      <tr><td style="width:36px;font-weight:900;color:var(--gold)">01</td><td contenteditable="true"><strong>Sumário Executivo</strong> — Visão geral da operação e tese de investimento</td></tr>
+      <tr><td style="font-weight:900;color:var(--gold)">02</td><td contenteditable="true"><strong>O Cedente</strong> — Ceará Sporting Club: dados cadastrais, governança, faturamento</td></tr>
+      <tr><td style="font-weight:900;color:var(--gold)">03</td><td contenteditable="true"><strong>O Lastro</strong> — Condomínio Forte União e a estrutura dos direitos de TV</td></tr>
+      <tr><td style="font-weight:900;color:var(--gold)">04</td><td contenteditable="true"><strong>Contratos de Transmissão</strong> — Mapa completo dos contratos geradores de receita</td></tr>
+      <tr><td style="font-weight:900;color:var(--gold)">05</td><td contenteditable="true"><strong>Distribuição e Cálculo</strong> — Regras de rateio e valor do recebível do Ceará</td></tr>
+      <tr><td style="font-weight:900;color:var(--gold)">06</td><td contenteditable="true"><strong>Enquadramento Jurídico</strong> — Base legal na Convenção do Condomínio</td></tr>
+      <tr><td style="font-weight:900;color:var(--gold)">07</td><td contenteditable="true"><strong>Precedente de Mercado</strong> — CCB Daycoval como referência</td></tr>
+      <tr><td style="font-weight:900;color:var(--gold)">08</td><td contenteditable="true"><strong>Garantias e Mitigantes</strong> — Mecanismos de proteção do investidor</td></tr>
+      <tr><td style="font-weight:900;color:var(--gold)">09</td><td contenteditable="true"><strong>Fluxo Operacional</strong> — Passo a passo, trava de pagamento e documentação</td></tr>
+      <tr><td style="font-weight:900;color:var(--gold)">10</td><td contenteditable="true"><strong>Anexos Documentais</strong> — Documentos que integram este dossiê</td></tr>
+    </table>
+  </div>
+  <div class="footer"><span class="f-logo">DUX</span><span>Confidencial</span></div>
+</div>
+
+<!-- ===== SLIDE 3: DIVISOR 01 ===== -->
+<div class="slide slide-dark"><div class="divider"><div class="num">01</div><h2 contenteditable="true">Sumário Executivo</h2><div class="desc" contenteditable="true">Visão geral da operação e tese de investimento</div></div><div class="gold-bar-bottom"></div></div>
+
+<!-- ===== SLIDE 4: VISÃO GERAL ===== -->
+<div class="slide slide-light">
+  <div class="gold-bar"></div>
+  <div class="inner">
+    <div class="header"><h3 contenteditable="true">Visão Geral da Operação</h3><span class="tag">SUMÁRIO EXECUTIVO</span></div>
+    <div class="cards c4 mb20">
+      <div class="card gld"><div class="cl">CEDENTE</div><div class="cv" style="font-size:17px" contenteditable="true">Ceará SC</div><div class="cd" contenteditable="true">Associação civil<br>CNPJ 07.369.226/0001-03</div></div>
+      <div class="card dk"><div class="cl">LASTRO</div><div class="cv" style="font-size:17px" contenteditable="true">Recebíveis LFU</div><div class="cd" contenteditable="true">Parcela do Resultado do<br>Condomínio Forte União</div></div>
+      <div class="card grn"><div class="cl">POOL DE CONTRATOS</div><div class="cv" contenteditable="true">R$ 2,2 bi</div><div class="cd" contenteditable="true">Pool total de receitas<br>do Condomínio em 2027</div></div>
+      <div class="card gld"><div class="cl">RECEBÍVEL CEARÁ</div><div class="cv" contenteditable="true">~R$ 11,2 MM</div><div class="cd" contenteditable="true">Parcela igualitária<br>Série B, 2027</div></div>
+    </div>
+    <p class="sm mb12" contenteditable="true">O <strong>Ceará Sporting Club</strong>, condômino do Condomínio Forte União, busca antecipar sua parcela dos recebíveis de direitos de transmissão referentes à <strong>temporada 2027</strong>. O lastro são os créditos que o Ceará tem direito a receber do Condomínio, provenientes de contratos celebrados com Globo, Amazon, Record, Google/YouTube, Betano e BRAX, que totalizam um pool anual superior a <strong>R$ 2,2 bilhões</strong>.</p>
+    <p class="sm" contenteditable="true">A operação consiste na <strong>cessão dos recebíveis futuros do Resultado do Condomínio</strong> ao FIDC, com trava de pagamento junto à LFU/Administradora, de modo que a parcela do Ceará seja direcionada diretamente ao cessionário. A Convenção do Condomínio <strong>autoriza expressamente</strong> este tipo de operação (Cláusulas 11.1.1 e 11.2), sem necessidade de anuência das emissoras ou do Condomínio.</p>
+  </div>
+  <div class="footer"><span class="f-logo">DUX</span><span>Valores estimados com base nos contratos vigentes e premissas de IPCA Focus</span></div>
+</div>
+
+<!-- ===== SLIDE 5: TESE ===== -->
+<div class="slide slide-light">
+  <div class="gold-bar"></div>
+  <div class="inner">
+    <div class="header"><h3 contenteditable="true">Tese de Investimento</h3><span class="tag">SUMÁRIO EXECUTIVO</span></div>
+    <div class="cards c2 mb20">
+      <div class="card grn"><div class="cl">SOLIDEZ DO POOL</div><div class="cv" style="font-size:20px" contenteditable="true">R$ 2,2 bi / ano</div><div class="cd" contenteditable="true">Contratos de longo prazo (até 2029) com contrapartes de primeira linha: Globo, Amazon, Google, Record. Reajuste anual por IPCA ou superior.</div></div>
+      <div class="card grn"><div class="cl">PREVISIBILIDADE</div><div class="cv" style="font-size:20px" contenteditable="true">Critério Igualitário</div><div class="cd" contenteditable="true">A antecipação se limita à parcela igualitária (70% do bucket Série B), independente de performance esportiva — é um piso garantido.</div></div>
+    </div>
+    <ul class="bl" contenteditable="true">
+      <li><strong>Base jurídica sólida:</strong> Convenção registrada em cartório (03/10/2024, 3º RTD/PJ Curitiba, nº 476957), irrevogável e irretratável.</li>
+      <li><strong>Independência das emissoras:</strong> O recebível é do Ceará contra o Condomínio, não contra a Globo/Amazon. As restrições de cessão operam em camada distinta.</li>
+      <li><strong>Trava de pagamento:</strong> Instrução direta à Administradora/LFU para pagamento ao cessionário, eliminando risco de desvio.</li>
+      <li><strong>Precedente de mercado:</strong> Ceará já realizou operação similar com Banco Daycoval (CCB nº 120027-7, R$ 7M, fev/2026).</li>
+      <li><strong>Contrapartes de primeira linha:</strong> Globo (maior grupo de mídia da AL), Amazon (Big Tech), Google (Big Tech), Record.</li>
+    </ul>
+  </div>
+  <div class="footer"><span class="f-logo">DUX</span><span>Confidencial</span></div>
+</div>
+
+<!-- ===== SLIDE 6: DIVISOR 02 ===== -->
+<div class="slide slide-dark"><div class="divider"><div class="num">02</div><h2 contenteditable="true">O Cedente</h2><div class="desc" contenteditable="true">Ceará Sporting Club — dados cadastrais, governança, faturamento</div></div><div class="gold-bar-bottom"></div></div>
+
+<!-- ===== SLIDE 7: CEDENTE ===== -->
+<div class="slide slide-light">
+  <div class="gold-bar"></div>
+  <div class="inner">
+    <div class="header"><h3 contenteditable="true">Ceará Sporting Club</h3><span class="tag">O CEDENTE</span></div>
+    <div class="cols">
+      <div>
+        <div class="col-label">Dados Cadastrais (Cartão CNPJ — 17/07/2026)</div>
+        <table>
+          <tr><td style="width:155px;font-weight:600" contenteditable="true">Razão Social</td><td contenteditable="true">Ceará Sporting Club</td></tr>
+          <tr><td style="font-weight:600">CNPJ</td><td contenteditable="true">07.369.226/0001-03</td></tr>
+          <tr><td style="font-weight:600">Natureza Jurídica</td><td contenteditable="true">399-9 — Associação Privada</td></tr>
+          <tr><td style="font-weight:600">CNAE</td><td contenteditable="true">93.12-3-00 — Clubes sociais, esportivos e similares</td></tr>
+          <tr><td style="font-weight:600">Endereço</td><td contenteditable="true">Av. João Pessoa, 3532, Porangabussu, Fortaleza/CE, CEP 60.425-680</td></tr>
+          <tr><td style="font-weight:600">Data de Abertura</td><td contenteditable="true">01/01/1974</td></tr>
+          <tr><td style="font-weight:600">Situação Cadastral</td><td contenteditable="true">ATIVA (desde 14/08/2006)</td></tr>
+          <tr><td style="font-weight:600">Porte</td><td contenteditable="true">DEMAIS</td></tr>
+          <tr><td style="font-weight:600">E-mail</td><td contenteditable="true">joao.paulo@cearasc.com</td></tr>
+          <tr><td style="font-weight:600">Série Atual (2026)</td><td contenteditable="true">Série B do Campeonato Brasileiro</td></tr>
+          <tr><td style="font-weight:600">Condômino CFU</td><td contenteditable="true">Sim — condômino nº 6</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="col-label">Diretoria Executiva — Triênio 2025/2027</div>
+        <table>
+          <tr><td style="font-weight:600;width:120px" contenteditable="true">Presidente</td><td contenteditable="true">João Paulo Silva<br><span style="font-size:10px;color:#888">CPF 615.218.253-00 | RG 94002173504</span></td></tr>
+          <tr><td style="font-weight:600">1º Vice-Pres.</td><td contenteditable="true">Francisco Ernando Uchoa Lima Sobrinho<br><span style="font-size:10px;color:#888">CPF 414.388.093-87 | OAB CE 10054</span></td></tr>
+          <tr><td style="font-weight:600">2º Vice-Pres.</td><td contenteditable="true">Celso Henrique Martins Rodrigues<br><span style="font-size:10px;color:#888">CPF 638.835.623-00 | OAB CE 25711</span></td></tr>
+        </table>
+        <p class="xs mt12" contenteditable="true">Eleitos em 28/11/2024, Chapa "Vozão Mais Forte" (166 × 123 votos). Ata registrada no 1º Registro Civil das Pessoas Jurídicas, nº 164786. 16 assinaturas digitais validadas pelo ITI.</p>
+
+        <div class="col-label mt16">Endividamento</div>
+        <p class="sm" contenteditable="true">CCB Daycoval nº 120027-7: R$ 7M (fev/2026), 10 parcelas. <span class="badge bg">✓ Quitada em dez/2026</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="f-logo">DUX</span><span>Fonte: Cartão CNPJ (17/07/2026), Ata de Eleição (28/11/2024)</span></div>
+</div>
+
+<!-- ===== SLIDE 8: FATURAMENTO ===== -->
+<div class="slide slide-light">
+  <div class="gold-bar"></div>
+  <div class="inner">
+    <div class="header"><h3 contenteditable="true">Faturamento — Receitas Líquidas</h3><span class="tag">O CEDENTE</span></div>
+    <p class="sm mb16" contenteditable="true">Declaração de faturamento emitida em 17/07/2026, assinada digitalmente pelo Presidente (João Paulo Silva) e pelo Contador (Lisarb dos Santos Rego Monteiro, CRC CE-026759/O-5).</p>
+    <div class="cols">
+      <div>
+        <table>
+          <tr><th>Mês/Ano</th><th style="text-align:right">Faturamento (R$)</th></tr>
+          <tr><td contenteditable="true">jul/25</td><td class="val" contenteditable="true">12.529.028,58</td></tr>
+          <tr><td contenteditable="true">ago/25</td><td class="val" contenteditable="true">9.277.169,42</td></tr>
+          <tr><td contenteditable="true">set/25</td><td class="val" contenteditable="true">14.278.590,97</td></tr>
+          <tr><td contenteditable="true">out/25</td><td class="val" contenteditable="true">11.500.614,81</td></tr>
+          <tr><td contenteditable="true">nov/25</td><td class="val" contenteditable="true">5.381.734,30</td></tr>
+          <tr><td contenteditable="true">dez/25</td><td class="val" contenteditable="true">66.194.451,25</td></tr>
+          <tr><td contenteditable="true">jan/26</td><td class="val" contenteditable="true">2.476.802,05</td></tr>
+          <tr><td contenteditable="true">fev/26</td><td class="val" contenteditable="true">14.095.811,96</td></tr>
+          <tr><td contenteditable="true">mar/26</td><td class="val" contenteditable="true">10.227.132,75</td></tr>
+          <tr><td contenteditable="true">abr/26</td><td class="val" contenteditable="true">8.169.808,10</td></tr>
+          <tr><td contenteditable="true">mai/26</td><td class="val" contenteditable="true">3.744.190,88</td></tr>
+          <tr><td contenteditable="true">jun/26</td><td class="val" contenteditable="true">3.343.588,78</td></tr>
+          <tr class="total-row"><td><strong>Total (12 meses)</strong></td><td class="val"><strong contenteditable="true">161.218.923,85</strong></td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="cards" style="grid-template-columns:1fr">
+          <div class="card gld"><div class="cl">FATURAMENTO ANUAL (12 MESES)</div><div class="cv" contenteditable="true">R$ 161,2 MM</div><div class="cd" contenteditable="true">Jul/2025 a Jun/2026</div></div>
+          <div class="card dk"><div class="cl">MÉDIA MENSAL</div><div class="cv" contenteditable="true">R$ 13,4 MM</div><div class="cd" contenteditable="true">Média aritmética dos 12 meses</div></div>
+          <div class="card dk"><div class="cl">PICO</div><div class="cv" contenteditable="true">R$ 66,2 MM</div><div class="cd" contenteditable="true">Dez/2025 — concentração típica de repasses anuais de dTV</div></div>
+        </div>
+        <p class="xs mt16" contenteditable="true">Nota: O pico de dez/2025 reflete a concentração de repasses anuais de direitos de transmissão no encerramento da temporada.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="f-logo">DUX</span><span>Fonte: Declaração de Faturamento (17/07/2026), assinada digitalmente</span></div>
+</div>
+
+<!-- ===== SLIDE 9: DIVISOR 03 ===== -->
+<div class="slide slide-dark"><div class="divider"><div class="num">03</div><h2 contenteditable="true">O Lastro</h2><div class="desc" contenteditable="true">Condomínio Forte União e a estrutura dos direitos de TV</div></div><div class="gold-bar-bottom"></div></div>
+
+<!-- ===== SLIDE 10: CONDOMÍNIO ===== -->
+<div class="slide slide-light">
+  <div class="gold-bar"></div>
+  <div class="inner">
+    <div class="header"><h3 contenteditable="true">Condomínio Forte União — Visão Geral</h3><span class="tag">O LASTRO</span></div>
+    <div class="cards c4 mb20">
+      <div class="card dk"><div class="cl">NATUREZA</div><div class="cv" style="font-size:13px" contenteditable="true">Condomínio Voluntário<br><em>Pro Indiviso</em></div><div class="cd" contenteditable="true">Arts. 1.314+ CC</div></div>
+      <div class="card gld"><div class="cl">CONDÔMINOS</div><div class="cv" contenteditable="true">25 + 1</div><div class="cd" contenteditable="true">25 clubes + Sports Media (investidor)</div></div>
+      <div class="card dk"><div class="cl">PRAZO</div><div class="cv" contenteditable="true">50 anos</div><div class="cd" contenteditable="true">Até 31/12/2074</div></div>
+      <div class="card grn"><div class="cl">REGISTRO</div><div class="cv" style="font-size:13px" contenteditable="true">3º RTD/PJ Curitiba</div><div class="cd" contenteditable="true">Nº 476957, 03/10/2024</div></div>
+    </div>
+    <div class="cols">
+      <div>
+        <div class="col-label">Participantes</div>
+        <table>
+          <tr><td style="font-weight:600" contenteditable="true">Clubes</td><td contenteditable="true">80% do Resultado (após integralização)</td></tr>
+          <tr><td style="font-weight:600" contenteditable="true">Investidor (Sports Media)</td><td contenteditable="true">20% do Resultado — XP, General Atlantic, Life Capital Partners</td></tr>
+          <tr><td style="font-weight:600" contenteditable="true">LFU</td><td contenteditable="true">Interveniente anuente — representa os clubes</td></tr>
+          <tr><td style="font-weight:600" contenteditable="true">Administradora</td><td contenteditable="true">Gestão operacional e financeira</td></tr>
+          <tr><td style="font-weight:600" contenteditable="true">Equipe Comercial</td><td contenteditable="true">LiveMode — comercialização dos Direitos</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="col-label">Objeto do Condomínio</div>
+        <ul class="bl" contenteditable="true">
+          <li><strong>Direitos de Arena:</strong> captação, transmissão e reprodução dos jogos do Brasileirão (Séries A e B)</li>
+          <li><strong>Propriedades Comerciais:</strong> publicidade de campo, conteúdo audiovisual, dados, NFTs, betting, redes sociais</li>
+          <li>Receitas centralizadas em <strong>conta única</strong> (Banco Genial S.A.)</li>
+          <li>Convenção <strong>irrevogável e irretratável</strong> (Cláusula 17.4)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="f-logo">DUX</span><span>Confidencial</span></div>
+</div>
+
+<!-- ===== SLIDE 11: FLUXO ===== -->
+<div class="slide slide-light">
+  <div class="gold-bar"></div>
+  <div class="inner">
+    <div class="header"><h3 contenteditable="true">Fluxo de Receitas do Condomínio</h3><span class="tag">O LASTRO</span></div>
+    <div class="flow mb20">
+      <div class="fb fb-dk" contenteditable="true">Globo<br><span style="font-size:10px">~R$ 937M</span></div>
+      <div class="fb fb-dk" contenteditable="true">Amazon<br><span style="font-size:10px">R$ 321M</span></div>
+      <div class="fb fb-dk" contenteditable="true">Record<br><span style="font-size:10px">~R$ 234M</span></div>
+      <div class="fb fb-dk" contenteditable="true">Google<br><span style="font-size:10px">~R$ 188M</span></div>
+      <div class="fb fb-dk" contenteditable="true">Betano<br><span style="font-size:10px">R$ 105M</span></div>
+      <div class="fb fb-dk" contenteditable="true">BRAX<br><span style="font-size:10px">R$ 351M</span></div>
+    </div>
+    <div class="center mb12"><span class="fa">▼</span></div>
+    <div class="flow mb12"><div class="fb fb-gld" style="min-width:500px;font-size:15px" contenteditable="true">Conta Centralizadora — Banco Genial S.A.<br><span style="font-size:11px;font-weight:400">Pool total: ~R$ 2,2 bilhões / ano</span></div></div>
+    <div class="center mb12"><span class="fa">▼</span></div>
+    <div class="flow mb12">
+      <div class="fb fb-lt" contenteditable="true">(-) Despesas ~3-4%</div>
+      <span class="fa">→</span>
+      <div class="fb fb-grn" style="min-width:260px;font-size:15px" contenteditable="true">RESULTADO</div>
+    </div>
+    <div class="center mb12"><span class="fa">▼</span></div>
+    <div class="flow">
+      <div class="fb fb-dk" contenteditable="true">Investidor<br><span style="font-size:16px;font-weight:800">20%</span></div>
+      <div class="fb fb-dk" contenteditable="true">Clubes Série A<br><span style="font-size:16px;font-weight:800">80% × 85%</span></div>
+      <div class="fb fb-gld" contenteditable="true">Clubes Série B<br><span style="font-size:16px;font-weight:800">80% × 15%</span><br><span style="font-size:10px">Ceará está aqui</span></div>
+    </div>
+  </div>
+  <div class="footer"><span class="f-logo">DUX</span><span>Valores referentes à temporada 2027</span></div>
+</div>
+
+<!-- ===== SLIDE 12: DIVISOR 04 ===== -->
+<div class="slide slide-dark"><div class="divider"><div class="num">04</div><h2 contenteditable="true">Contratos de Transmissão</h2><div class="desc" contenteditable="true">Mapa dos contratos que geram a receita do Condomínio</div></div><div class="gold-bar-bottom"></div></div>
+
+<!-- ===== SLIDE 13: MAPA ===== -->
+<div class="slide slide-light">
+  <div class="gold-bar"></div>
+  <div class="inner">
+    <div class="header"><h3 contenteditable="true">Contratos Vigentes em 2027</h3><span class="tag">CONTRATOS DE TRANSMISSÃO</span></div>
+    <table>
+      <tr><th>Contrato</th><th>Contraparte</th><th>Objeto</th><th>Vigência</th><th style="text-align:right">Valor 2027 (R$ mil)</th><th>Indexação</th></tr>
+      <tr><td contenteditable="true"><strong>Globo (Fixa)</strong></td><td contenteditable="true">Globo Comunicação S.A.</td><td contenteditable="true">TV Aberta/Fechada/Digital, Série A</td><td contenteditable="true">2025-2029</td><td class="val" contenteditable="true">~937.000</td><td contenteditable="true">IPCA (teto 5%)</td></tr>
+      <tr><td contenteditable="true"><strong>Globo (Variável)</strong></td><td contenteditable="true">Globo Comunicação S.A.</td><td contenteditable="true">5% Receita Bruta Premiere</td><td contenteditable="true">2025-2029</td><td class="val" contenteditable="true">~85.000</td><td contenteditable="true">Variável</td></tr>
+      <tr><td contenteditable="true"><strong>Amazon</strong></td><td contenteditable="true">Amazon.com Services LLC</td><td contenteditable="true">Streaming Série A (Prime Video)</td><td contenteditable="true">2025-2029</td><td class="val" contenteditable="true">321.300</td><td contenteditable="true">~10%/ano fixo</td></tr>
+      <tr><td contenteditable="true"><strong>Record</strong></td><td contenteditable="true">Rádio e TV Record S.A.</td><td contenteditable="true">TV Aberta Série A (38 jogos)</td><td contenteditable="true">2025-2027</td><td class="val" contenteditable="true">~234.000</td><td contenteditable="true">IPCA (s/ teto)</td></tr>
+      <tr><td contenteditable="true"><strong>Google/YouTube</strong></td><td contenteditable="true">Google LLC</td><td contenteditable="true">Streaming Série A (CazeTV)</td><td contenteditable="true">2025-2027</td><td class="val" contenteditable="true">~188.000</td><td contenteditable="true">IPCA</td></tr>
+      <tr><td contenteditable="true"><strong>Betano</strong></td><td contenteditable="true">Kaizen Gaming Brasil</td><td contenteditable="true">Patrocínio transmissões Série A</td><td contenteditable="true">2025-2027</td><td class="val" contenteditable="true">105.270</td><td contenteditable="true">~10%/ano fixo</td></tr>
+      <tr><td contenteditable="true"><strong>BRAX (A+B)</strong></td><td contenteditable="true">BRAX Produções Ltda.</td><td contenteditable="true">Propriedades de Campo, Série A</td><td contenteditable="true">2025-2029</td><td class="val" contenteditable="true">278.300</td><td contenteditable="true">+10%/ano fixo</td></tr>
+      <tr><td contenteditable="true"><strong>BRAX (Série B)</strong></td><td contenteditable="true">BRAX Produções Ltda.</td><td contenteditable="true">Propriedades de Campo, Série B</td><td contenteditable="true">2025-2029</td><td class="val" contenteditable="true">72.600</td><td contenteditable="true">+10%/ano fixo</td></tr>
+      <tr class="total-row"><td colspan="4"><strong>TOTAL ESTIMADO 2027</strong></td><td class="val"><strong contenteditable="true">~2.221.470</strong></td><td></td></tr>
+    </table>
+    <p class="xs mt12" contenteditable="true">Globo e Record: IPCA projetado (Focus). Amazon, Betano e BRAX: valores fixos contratuais. Google: Term Sheet + IPCA.</p>
+  </div>
+  <div class="footer"><span class="f-logo">DUX</span><span>Confidencial</span></div>
+</div>
+
+<!-- ===== SLIDE 14: DIVISOR 05 ===== -->
+<div class="slide slide-dark"><div class="divider"><div class="num">05</div><h2 contenteditable="true">Distribuição e Cálculo</h2><div class="desc" contenteditable="true">Regras de rateio e valor do recebível do Ceará</div></div><div class="gold-bar-bottom"></div></div>
+
+<!-- ===== SLIDE 15: CÁLCULO ===== -->
+<div class="slide slide-light">
+  <div class="gold-bar"></div>
+  <div class="inner">
+    <div class="header"><h3 contenteditable="true">Cálculo do Recebível do Ceará (2027)</h3><span class="tag">DISTRIBUIÇÃO E CÁLCULO</span></div>
+    <p class="sm mb16" contenteditable="true">Ceará na <strong>Série B</strong>, limitando ao <strong>critério igualitário</strong> (piso garantido):</p>
+    <table>
+      <tr><th style="width:55%">Linha</th><th style="text-align:right">Valor (R$ mil)</th><th>Referência</th></tr>
+      <tr><td contenteditable="true">Pool total de receitas 2027</td><td class="val" contenteditable="true">~2.221.470</td><td contenteditable="true">Soma dos contratos</td></tr>
+      <tr><td contenteditable="true">(-) Despesas do Condomínio (~3,5%)</td><td class="val" contenteditable="true">(~77.750)</td><td contenteditable="true">Cl. 9.3</td></tr>
+      <tr><td contenteditable="true"><strong>= Resultado</strong></td><td class="val" contenteditable="true"><strong>~2.143.720</strong></td><td contenteditable="true">Cl. 9.5</td></tr>
+      <tr><td contenteditable="true">× 80% (parcela dos clubes)</td><td class="val" contenteditable="true">~1.714.976</td><td contenteditable="true">Cl. 9.6(ii)</td></tr>
+      <tr><td contenteditable="true">× 15% (bucket Série B)</td><td class="val" contenteditable="true">~257.246</td><td contenteditable="true">Cl. 9.6(ii)(c)</td></tr>
+      <tr><td contenteditable="true">× 70% (critério igualitário)</td><td class="val" contenteditable="true">~180.072</td><td contenteditable="true">Anexo 9.6(c)</td></tr>
+      <tr><td contenteditable="true">÷ 16 clubes LFU na Série B</td><td class="val" contenteditable="true">÷ 16</td><td contenteditable="true">Premissa atual</td></tr>
+      <tr class="total-row"><td><strong>Parcela igualitária do Ceará</strong></td><td class="val"><strong contenteditable="true">~11.255</strong></td><td></td></tr>
+    </table>
+    <div class="cards c2 mt20">
+      <div class="card grn"><div class="cl">CENÁRIO BASE (16 CLUBES LFU NA B)</div><div class="cv" contenteditable="true">~R$ 11,2 MM</div><div class="cd" contenteditable="true">Piso garantido, independente de performance</div></div>
+      <div class="card gld"><div class="cl">SENSIBILIDADE (14 CLUBES LFU NA B)</div><div class="cv" contenteditable="true">~R$ 12,9 MM</div><div class="cd" contenteditable="true">Menos clubes = maior parcela por clube</div></div>
+    </div>
+  </div>
+  <div class="footer"><span class="f-logo">DUX</span><span>Não inclui parcela de Performance Esportiva (30% do bucket Série B)</span></div>
+</div>
+
+<!-- ===== SLIDE 16: DIVISOR 06 ===== -->
+<div class="slide slide-dark"><div class="divider"><div class="num">06</div><h2 contenteditable="true">Enquadramento Jurídico</h2><div class="desc" contenteditable="true">Base legal na Convenção do Condomínio Forte União</div></div><div class="gold-bar-bottom"></div></div>
+
+<!-- ===== SLIDE 17: JURÍDICO ===== -->
+<div class="slide slide-light">
+  <div class="gold-bar"></div>
+  <div class="inner">
+    <div class="header"><h3 contenteditable="true">Autorização Expressa na Convenção</h3><span class="tag">ENQUADRAMENTO JURÍDICO</span></div>
+    <div class="cards c2 mb16">
+      <div class="card grn"><div class="cl">CLÁUSULA 11.1.1 — ONERAÇÃO LIVRE</div><div class="cd" style="font-size:12px;color:#333" contenteditable="true">"Nada nesta Convenção será interpretado como restrição a qualquer dos Condôminos de <strong>Onerar qualquer de seus recebíveis</strong> atrelados às suas respectivas parcelas do Resultado, os quais estão <strong>livres para serem Onerados, sem qualquer limitação</strong>."</div></div>
+      <div class="card grn"><div class="cl">CLÁUSULA 11.2 — ANTECIPAÇÃO DE RECEBÍVEIS</div><div class="cd" style="font-size:12px;color:#333" contenteditable="true">"Os Clubes poderão realizar operações, negócios ou transações, inclusive de natureza financeira, com o objetivo de <strong>antecipar, securitizar e/ou descontar qualquer parcela do Resultado</strong> a que o Clube tenha direito."</div></div>
+    </div>
+    <div class="card gld mb16"><div class="cl">CLÁUSULA 11.2 — DISTINÇÃO FUNDAMENTAL</div><div class="cd" style="font-size:13px;color:#333" contenteditable="true">"A Antecipação de Recebíveis do Resultado do Clube <strong>NÃO é considerada uma Antecipação Global de Contratos do Condomínio.</strong>"</div></div>
+    <div class="cols">
+      <div><div class="col-label">Requisito Obrigatório (Cl. 11.2.1)</div><ul class="bl" contenteditable="true"><li>Contraparte (FIDC/DUX) deve <strong>tomar ciência formal e por escrito</strong> dos termos da Convenção</li><li>Reconhecer que recebíveis estão sujeitos à Convenção</li><li>A antecipação <strong>não confere preferência</strong> ao credor</li></ul></div>
+      <div><div class="col-label">O que NÃO é necessário</div><ul class="bl" contenteditable="true"><li>Anuência da Globo, Amazon, Record ou emissoras</li><li>Aprovação da Assembleia do Condomínio</li><li>Anuência do Investidor (Sports Media)</li><li>Anuência dos demais clubes condôminos</li></ul></div>
+    </div>
+  </div>
+  <div class="footer"><span class="f-logo">DUX</span><span>Confidencial</span></div>
+</div>
+
+<!-- ===== SLIDE 18: CAMADAS ===== -->
+<div class="slide slide-light">
+  <div class="gold-bar"></div>
+  <div class="inner">
+    <div class="header"><h3 contenteditable="true">Por que as Restrições dos Contratos Não Impedem a Operação</h3><span class="tag">ENQUADRAMENTO JURÍDICO</span></div>
+    <p class="sm mb20" contenteditable="true">Os contratos de transmissão vedam cessão de créditos. Porém, a operação <strong>não envolve cessão desses créditos</strong>. São duas camadas jurídicas distintas:</p>
+    <div class="cards c2 mb24">
+      <div class="card rd"><div class="cl" style="color:var(--red)">CAMADA 1 — CONDOMÍNIO VS. EMISSORAS</div><div class="cd" style="font-size:12px;color:#333" contenteditable="true"><strong>Credores:</strong> Condomínio / Clubes coletivamente<br><strong>Devedores:</strong> Globo, Amazon, Record, Google<br><strong>Cessão:</strong> Vedada nos contratos<br><br><strong style="color:var(--red)">✗ Esta operação NÃO atua nesta camada</strong></div></div>
+      <div class="card grn"><div class="cl" style="color:var(--green)">CAMADA 2 — CLUBE VS. CONDOMÍNIO</div><div class="cd" style="font-size:12px;color:#333" contenteditable="true"><strong>Credor:</strong> Ceará Sporting Club<br><strong>Devedor:</strong> Condomínio Forte União<br><strong>Cessão:</strong> Expressamente permitida (Cl. 11.1.1 e 11.2)<br><br><strong style="color:var(--green)">✓ Esta operação atua NESTA camada</strong></div></div>
+    </div>
+    <div class="flow">
+      <div class="fb fb-dk" contenteditable="true">Emissoras pagam<br>ao Condomínio</div><span class="fa">→</span>
+      <div class="fb fb-lt" contenteditable="true">Conta<br>Centralizadora</div><span class="fa">→</span>
+      <div class="fb fb-dk" contenteditable="true">Condomínio apura<br>Resultado</div><span class="fa">→</span>
+      <div class="fb fb-gld" contenteditable="true">Parcela do Ceará<br><span style="font-size:9px">ESTE é o recebível cedido</span></div><span class="fa">→</span>
+      <div class="fb fb-grn" contenteditable="true">Pagamento direto<br>ao FIDC/DUX</div>
+    </div>
+  </div>
+  <div class="footer"><span class="f-logo">DUX</span><span>Confidencial</span></div>
+</div>
+
+<!-- ===== SLIDE 19: DIVISOR 07 ===== -->
+<div class="slide slide-dark"><div class="divider"><div class="num">07</div><h2 contenteditable="true">Precedente de Mercado</h2><div class="desc" contenteditable="true">Operação similar já realizada pelo Ceará com o Banco Daycoval</div></div><div class="gold-bar-bottom"></div></div>
+
+<!-- ===== SLIDE 20: PRECEDENTE ===== -->
+<div class="slide slide-light">
+  <div class="gold-bar"></div>
+  <div class="inner">
+    <div class="header"><h3 contenteditable="true">CCB Daycoval — Operação de Referência</h3><span class="tag">PRECEDENTE DE MERCADO</span></div>
+    <p class="sm mb20" contenteditable="true">O Ceará já realizou antecipação sobre o mesmo lastro com o <strong>Banco Daycoval S.A.</strong>, instituição regulada pelo BACEN.</p>
+    <div class="cols">
+      <div>
+        <div class="col-label">Dados da CCB nº 120027-7</div>
+        <table>
+          <tr><td style="font-weight:600;width:150px" contenteditable="true">Credor</td><td contenteditable="true">Banco Daycoval S.A.</td></tr>
+          <tr><td style="font-weight:600">Emitente</td><td contenteditable="true">Ceará Sporting Club</td></tr>
+          <tr><td style="font-weight:600">Valor Principal</td><td contenteditable="true">R$ 7.000.000,00</td></tr>
+          <tr><td style="font-weight:600">Emissão</td><td contenteditable="true">27/02/2026</td></tr>
+          <tr><td style="font-weight:600">Vencimento</td><td contenteditable="true">30/12/2026</td></tr>
+          <tr><td style="font-weight:600">Taxa</td><td contenteditable="true">1,95% a.m. (26,08% a.a.)</td></tr>
+          <tr><td style="font-weight:600">Parcelas</td><td contenteditable="true">10× R$ 779.157,70</td></tr>
+          <tr><td style="font-weight:600">Garantia</td><td contenteditable="true">Cessão Fiduciária de Direitos Creditórios</td></tr>
+          <tr><td style="font-weight:600">Status</td><td><span class="badge bg" contenteditable="true">✓ Quitada em dez/2026</span></td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="col-label">O que este precedente demonstra</div>
+        <ul class="bl" contenteditable="true">
+          <li><strong>Aceitação institucional:</strong> Banco regulado pelo BACEN aceitou recebíveis da dTV como lastro</li>
+          <li><strong>Estrutura funcional:</strong> Cessão fiduciária sobre recebíveis do Condomínio operou sem impedimentos</li>
+          <li><strong>Adimplência:</strong> Ceará quitou todas as 10 parcelas no prazo</li>
+          <li><strong>Compatibilidade:</strong> Confirma que a Convenção permite este tipo de estrutura</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="f-logo">DUX</span><span>Confidencial</span></div>
+</div>
+
+<!-- ===== SLIDE 21: DIVISOR 08 ===== -->
+<div class="slide slide-dark"><div class="divider"><div class="num">08</div><h2 contenteditable="true">Garantias e Mitigantes</h2><div class="desc" contenteditable="true">Mecanismos de proteção do investidor</div></div><div class="gold-bar-bottom"></div></div>
+
+<!-- ===== SLIDE 22: GARANTIAS ===== -->
+<div class="slide slide-light">
+  <div class="gold-bar"></div>
+  <div class="inner">
+    <div class="header"><h3 contenteditable="true">Mecanismos de Proteção</h3><span class="tag">GARANTIAS E MITIGANTES</span></div>
+    <div class="cards c2 mb16">
+      <div class="card grn"><div class="cl">POOL ROBUSTO</div><div class="cv" style="font-size:18px" contenteditable="true">R$ 2,2 bi / ano</div><div class="cd" contenteditable="true">Contratos até 2029 com Globo, Amazon, BRAX. O recebível do Ceará (~R$ 11,2M) = apenas 0,5% do pool total.</div></div>
+      <div class="card grn"><div class="cl">CONTRAPARTES DE PRIMEIRA LINHA</div><div class="cv" style="font-size:15px" contenteditable="true">Risco Quase Soberano</div><div class="cd" contenteditable="true">Globo: maior mídia da AL. Amazon: US$ 575 bi receita. Google: US$ 307 bi. Inadimplência praticamente nula.</div></div>
+    </div>
+    <div class="cards c2 mb16">
+      <div class="card gld"><div class="cl">TRAVA DE PAGAMENTO</div><div class="cv" style="font-size:15px" contenteditable="true">Direto na LFU</div><div class="cd" contenteditable="true">Administradora direcionará a parcela do Ceará diretamente ao FIDC/DUX. Fluxo não passa pela conta do clube.</div></div>
+      <div class="card gld"><div class="cl">PARCELA IGUALITÁRIA</div><div class="cv" style="font-size:15px" contenteditable="true">Piso Garantido</div><div class="cd" contenteditable="true">Critério igualitário (70% do bucket Série B) independe de performance esportiva. Só muda se cair para Série C.</div></div>
+    </div>
+    <div class="cards c2">
+      <div class="card dk"><div class="cl">CONVENÇÃO IRREVOGÁVEL</div><div class="cv" style="font-size:13px" contenteditable="true">Registrada em Cartório</div><div class="cd" contenteditable="true">Irrevogável e irretratável (Cl. 17.4), registrada no 3º RTD/PJ Curitiba. Vincula todos os condôminos e sucessores.</div></div>
+      <div class="card dk"><div class="cl">INVESTIDORES INSTITUCIONAIS</div><div class="cv" style="font-size:13px" contenteditable="true">XP + Gen. Atlantic + LCP</div><div class="cd" contenteditable="true">Aportaram bilhões na estrutura. Interesse alinhado na preservação do valor dos direitos.</div></div>
+    </div>
+  </div>
+  <div class="footer"><span class="f-logo">DUX</span><span>Confidencial</span></div>
+</div>
+
+<!-- ===== SLIDE 23: DIVISOR 09 ===== -->
+<div class="slide slide-dark"><div class="divider"><div class="num">09</div><h2 contenteditable="true">Fluxo Operacional</h2><div class="desc" contenteditable="true">Passo a passo, trava de pagamento e documentação</div></div><div class="gold-bar-bottom"></div></div>
+
+<!-- ===== SLIDE 24: PASSOS ===== -->
+<div class="slide slide-light">
+  <div class="gold-bar"></div>
+  <div class="inner">
+    <div class="header"><h3 contenteditable="true">Etapas para Viabilização</h3><span class="tag">FLUXO OPERACIONAL</span></div>
+    <div class="step"><div class="sn">1</div><div><div class="st" contenteditable="true">Autorização Interna do Ceará</div><div class="sd" contenteditable="true">Ata do Conselho Deliberativo autorizando a cessão/antecipação dos recebíveis da temporada 2027, identificando o cessionário (FIDC/DUX).</div></div></div>
+    <div class="step"><div class="sn">2</div><div><div class="st" contenteditable="true">Termo de Ciência da Convenção</div><div class="sd" contenteditable="true">FIDC/DUX formaliza ciência dos termos da Convenção: recebíveis sujeitos às regras do Condomínio, sem preferência. <strong>Requisito obrigatório (Cláusula 11.2.1).</strong></div></div></div>
+    <div class="step"><div class="sn">3</div><div><div class="st" contenteditable="true">Formalização do Instrumento de Cessão</div><div class="sd" contenteditable="true">Contrato entre Ceará (cedente) e FIDC/DUX (cessionário), com Convenção e Termo de Ciência como anexos.</div></div></div>
+    <div class="step"><div class="sn">4</div><div><div class="st" contenteditable="true">Notificação ao Condomínio e Administradora</div><div class="sd" contenteditable="true">Comunicar a cessão e instruir o redirecionamento dos pagamentos referentes à parcela do Ceará diretamente ao FIDC/DUX.</div></div></div>
+    <div class="step"><div class="sn">5</div><div><div class="st" contenteditable="true">Trava de Pagamento na LFU</div><div class="sd" contenteditable="true">Administradora passa a creditar a parcela igualitária do Ceará diretamente na conta do FIDC/DUX, a cada distribuição (Cl. 9.7).</div></div></div>
+    <div class="step"><div class="sn">6</div><div><div class="st" contenteditable="true">Liberação dos Recursos ao Ceará</div><div class="sd" contenteditable="true">Após formalização e confirmação da trava, FIDC/DUX libera o valor da antecipação ao Ceará SC.</div></div></div>
+  </div>
+  <div class="footer"><span class="f-logo">DUX</span><span>Confidencial</span></div>
+</div>
+
+<!-- ===== SLIDE 25: DOCUMENTAÇÃO ===== -->
+<div class="slide slide-light">
+  <div class="gold-bar"></div>
+  <div class="inner">
+    <div class="header"><h3 contenteditable="true">Documentação Necessária por Etapa</h3><span class="tag">FLUXO OPERACIONAL</span></div>
+    <table>
+      <tr><th>Etapa</th><th>Documento</th><th>Responsável</th><th>Status</th></tr>
+      <tr><td contenteditable="true"><strong>1</strong></td><td contenteditable="true">Ata do Conselho Deliberativo do Ceará SC</td><td contenteditable="true">Ceará</td><td><span class="badge by">A obter</span></td></tr>
+      <tr><td contenteditable="true"><strong>2</strong></td><td contenteditable="true">Termo de Ciência da Convenção pelo FIDC/DUX</td><td contenteditable="true">DUX / FIDC</td><td><span class="badge by">A elaborar</span></td></tr>
+      <tr><td contenteditable="true"><strong>3</strong></td><td contenteditable="true">Contrato de Cessão de Créditos</td><td contenteditable="true">DUX + Ceará</td><td><span class="badge by">A elaborar</span></td></tr>
+      <tr><td contenteditable="true"><strong>4</strong></td><td contenteditable="true">Notificação formal ao Condomínio/Administradora</td><td contenteditable="true">Ceará + DUX</td><td><span class="badge by">A elaborar</span></td></tr>
+      <tr><td contenteditable="true"><strong>5</strong></td><td contenteditable="true">Instrução de trava de pagamento</td><td contenteditable="true">Ceará</td><td><span class="badge by">A elaborar</span></td></tr>
+      <tr><td contenteditable="true"><strong>6</strong></td><td contenteditable="true">Comprovante de liberação ao Ceará</td><td contenteditable="true">FIDC / DUX</td><td><span class="badge by">Após formalização</span></td></tr>
+      <tr><td>—</td><td contenteditable="true">Convenção do Condomínio (registrada)</td><td>—</td><td><span class="badge bg">✓ Disponível</span></td></tr>
+      <tr><td>—</td><td contenteditable="true">Estatuto Social do Ceará (6ª Reforma, 2018)</td><td contenteditable="true">Ceará</td><td><span class="badge bg">✓ Disponível</span></td></tr>
+      <tr><td>—</td><td contenteditable="true">Declaração de Faturamento (jul/25 a jun/26)</td><td contenteditable="true">Ceará</td><td><span class="badge bg">✓ Disponível</span></td></tr>
+      <tr><td>—</td><td contenteditable="true">Ata de Eleição Triênio 2025-2027 (registrada)</td><td contenteditable="true">Ceará</td><td><span class="badge bg">✓ Disponível</span></td></tr>
+      <tr><td>—</td><td contenteditable="true">Cartão CNPJ (emitido 17/07/2026)</td><td contenteditable="true">Ceará</td><td><span class="badge bg">✓ Disponível</span></td></tr>
+      <tr><td>—</td><td contenteditable="true">Documentos pessoais dos representantes (CNH, RG, CPF)</td><td contenteditable="true">Ceará</td><td><span class="badge bg">✓ Disponível</span></td></tr>
+      <tr><td>—</td><td contenteditable="true">Comprovante de endereço (PJ e representantes)</td><td contenteditable="true">Ceará</td><td><span class="badge bg">✓ Disponível</span></td></tr>
+      <tr><td>—</td><td contenteditable="true">Certidões negativas (federal, estadual, trabalhista)</td><td contenteditable="true">Ceará</td><td><span class="badge by">A obter</span></td></tr>
+    </table>
+  </div>
+  <div class="footer"><span class="f-logo">DUX</span><span>Confidencial</span></div>
+</div>
+
+<!-- ===== SLIDE 26: DIVISOR 10 ===== -->
+<div class="slide slide-dark"><div class="divider"><div class="num">10</div><h2 contenteditable="true">Anexos Documentais</h2><div class="desc" contenteditable="true">Documentos que integram este dossiê</div></div><div class="gold-bar-bottom"></div></div>
+
+<!-- ===== SLIDE 27: ANEXOS ===== -->
+<div class="slide slide-light">
+  <div class="gold-bar"></div>
+  <div class="inner">
+    <div class="header"><h3 contenteditable="true">Documentos Disponíveis</h3><span class="tag">ANEXOS DOCUMENTAIS</span></div>
+    <div class="cols">
+      <div>
+        <div class="col-label">Institucionais e Cadastrais do Cedente</div>
+        <table style="font-size:11px">
+          <tr><td contenteditable="true">Cartão CNPJ (emitido 17/07/2026)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Ata de Eleição Triênio 2025-2027 (reg. nº 164786)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Declaração de Faturamento jul/25 a jun/26</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Estatuto Social — 6ª Reforma (2018)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">CNH do Presidente (João Paulo Silva)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Certidão de Casamento do Presidente</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">CNH do Diretor Financeiro (Alcy)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">RG e CPF (Katianne)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Comprovante de endereço — Ceará SC</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Comprovante de endereço — Diretor Financeiro</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Convenção do Condomínio Forte União (103p)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Ata de Constituição do Condomínio</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">AGE — Rerratificação de Endereço</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Ata Cons. Deliberativo Ceará (21/03/2023)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Dossiê FFU — Panorama Institucional</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">CCB Daycoval (referência)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Fluxo de Caixa Projetado 2026-2029</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Certidões negativas</td><td><span class="badge by">Pendente</span></td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="col-label">Contratos de Transmissão</div>
+        <table style="font-size:11px">
+          <tr><td contenteditable="true">Globo — Contrato (30/01/2025, 40p)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Amazon — Rights Agreement (28/10/2024, 47p)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Record — Contrato + 1º Aditivo (05/09/2024, 46p)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Google/YouTube — Term Sheet (08/10/2024, 21p)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Betano — Contrato Patrocínio (01/01/2025, 22p)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">BRAX — Contrato A+B (31/12/2024, 46p)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">BRAX — Contrato Série B (18/03/2025, 44p)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">RedeTV — MoU Série B (03/04/2025, 18p)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">Kwai — MoU Série B (23/04/2025, 21p)</td><td><span class="badge bg">✓</span></td></tr>
+          <tr><td contenteditable="true">NWB/Desimpedidos — MoU (03/04/2025, 17p)</td><td><span class="badge bg">✓</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="f-logo">DUX</span><span>Confidencial</span></div>
+</div>
+
+<!-- ===== SLIDE 28: CONTRACAPA ===== -->
+<div class="slide slide-dark">
+  <div class="cover">
+    <div class="logo">DUX</div>
+    <div class="tag" style="margin-top:40px">CONFIDENCIAL</div>
+    <h1 style="font-size:48px" contenteditable="true">Obrigado.</h1>
+    <div class="sub" contenteditable="true">thiagotiburcio@wearedux.com<br>wearedux.com</div>
+  </div>
+  <div class="gold-bar-bottom"></div>
+</div>
+
+</body>
+</html>
